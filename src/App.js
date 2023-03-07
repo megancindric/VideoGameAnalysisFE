@@ -1,7 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import GameTable from './components/GameTable/GameTable';
+import { useState, useEffect } from 'react';
+import axios from "axios"
 
 function App() {
+
+  const [allGames, setAllGames] = useState([]);
+
+  useEffect(()=> {
+    fetchAllGames()
+  }, [])
+
+  const fetchAllGames = async() => {
+    try{ let response = await axios.get(`/api/getallgames`)
+    console.log(response.data)
+  
+    setAllGames(response.data);
+    } catch (error) {
+      console.log("Error in fetchAllGames: ", error)
+    }
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -9,14 +28,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <GameTable allGames = {allGames}/>
       </header>
     </div>
   );
