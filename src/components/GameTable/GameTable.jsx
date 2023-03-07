@@ -1,7 +1,7 @@
 import React from "react";
 
 const GameTable = ({ allGames }) => {
-  let gamePlaceholder = allGames.slice(0, 100);
+  let gamePlaceholder = allGames.slice(0, 50);
   console.log(gamePlaceholder);
   return (
     <div>
