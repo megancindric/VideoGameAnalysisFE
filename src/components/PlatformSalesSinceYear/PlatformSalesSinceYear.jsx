@@ -1,7 +1,7 @@
 import React from "react";
-import { BarChart, Bar, XAxis } from "recharts";
+import { BarChart, Bar, XAxis, Tooltip } from "recharts";
 
-const PlatformSalesSinceYear = ({ platformSalesSinceYear }) => {
+const PlatformSalesSinceYear = ({ platformSalesSinceYear, selectedYear }) => {
   var data = [];
   for (const [key, value] of Object.entries(platformSalesSinceYear)) {
     data.push({ name: key, amt: value });
@@ -9,9 +9,10 @@ const PlatformSalesSinceYear = ({ platformSalesSinceYear }) => {
   console.log(data);
   return (
     <div>
-      <h3>Game sales by platform since 2011</h3>
+      <h3>Global Game sales by platform since {selectedYear}</h3>
       <BarChart width={800} height={300} data={data}>
         <Bar dataKey="amt" fill="#1780a1" />
+        <Tooltip />
         <XAxis dataKey="name" />
       </BarChart>
     </div>
