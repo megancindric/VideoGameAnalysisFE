@@ -1,6 +1,6 @@
 import React from "react";
 
-const GameTable = ({ allGames }) => {
+const GameTable = ({ allGames, setGameName }) => {
   let gamePlaceholder = allGames.slice(0, 50);
   console.log(gamePlaceholder);
   return (
@@ -19,7 +19,7 @@ const GameTable = ({ allGames }) => {
         </thead>
         <tbody>
           {gamePlaceholder.map((game) => (
-            <tr key={game.id}>
+            <tr key={game.id} onClick={() => setGameName(game.name)}>
               <td>{game.rank}</td>
               <td>{game.name}</td>
               <td>{game.platform}</td>
