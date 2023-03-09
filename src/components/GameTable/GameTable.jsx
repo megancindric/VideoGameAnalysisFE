@@ -30,7 +30,7 @@ const GameTable = ({ allGames, setGameName }) => {
           </tr>
         </thead>
         <tbody>
-          {allGames.map((game) => (
+          {allGames.slice(0, 50).map((game) => (
             <tr key={game.id} onClick={() => setGameName(game.name)}>
               <td>{game.rank}</td>
               <td>{game.name}</td>

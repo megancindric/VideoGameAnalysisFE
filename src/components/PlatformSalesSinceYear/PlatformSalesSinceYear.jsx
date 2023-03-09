@@ -6,7 +6,6 @@ const PlatformSalesSinceYear = ({ platformSalesSinceYear, selectedYear }) => {
   for (const [key, value] of Object.entries(platformSalesSinceYear)) {
     data.push({ name: key, amt: value });
   }
-  console.log(data);
   return (
     <div>
       <h3>Global Game sales by platform since {selectedYear}</h3>

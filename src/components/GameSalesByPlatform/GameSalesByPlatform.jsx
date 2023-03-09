@@ -6,7 +6,6 @@ const GameSalesByPlatform = ({ gameName, gameSalesByPlatform }) => {
   for (const [key, value] of Object.entries(gameSalesByPlatform)) {
     data.push({ name: key, value: value });
   }
-  console.log(data);
   return (
     <div>
       <h3>{gameName} Sales by Platform</h3>
