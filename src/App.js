@@ -69,11 +69,11 @@ function App() {
 
  
   return (
-    <div>
+    <div class="flex flex-col items-center">
         <Header/>
-        <p>
+        <h1 class="text-3xl">
           An analysis of trends and patterns in global video game sales over the past 4 decades
-        </p>  
+        </h1>  
         <DropDownMenu values= {allYears} setValue={setSelectedYear} defaultValue={selectedYear}/>
 
         <PlatformSalesSinceYear platformSalesSinceYear={platformSalesSinceYear} selectedYear={selectedYear}/>  
