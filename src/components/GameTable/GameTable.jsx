@@ -1,11 +1,23 @@
 import React from "react";
-
+import SearchBar from "../SearchBar/SearchBar";
+import { useState, useEffect } from "react";
 const GameTable = ({ allGames, setGameName }) => {
-  let gamePlaceholder = allGames.slice(0, 50);
-  console.log(gamePlaceholder);
+  const [search, setSearch] = useState("");
+
+  // let tableGames = allGames.filter((game) => {
+  //   if (
+  //     game.name.toLowerCase().includes(search.toLowerCase()) ||
+  //     game.platform.toLowerCase().includes(search.toLowerCase()) ||
+  //     game.publisher.toLowerCase().includes(search.toLowerCase())
+  //   ) {
+  //     return true;
+  //   }
+  // });
+  console.log(search);
   return (
     <div>
       <h3>Game Table Here!</h3>
+      <SearchBar setSearch={setSearch} />
       <table>
         <thead>
           <tr>
@@ -18,7 +30,7 @@ const GameTable = ({ allGames, setGameName }) => {
           </tr>
         </thead>
         <tbody>
-          {gamePlaceholder.map((game) => (
+          {allGames.map((game) => (
             <tr key={game.id} onClick={() => setGameName(game.name)}>
               <td>{game.rank}</td>
               <td>{game.name}</td>

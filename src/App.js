@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import GameTable from './components/GameTable/GameTable';
 import Header from './components/Header/Header';
@@ -65,6 +64,8 @@ function App() {
       console.log("Error in setGameSalesByPlatform: ", error)
     }
   }
+
+ 
   return (
     <div>
         <Header/>
