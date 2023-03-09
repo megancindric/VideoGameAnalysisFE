@@ -13,7 +13,7 @@ const GameTable = ({ allGames, setGameName }) => {
   //     return true;
   //   }
   // });
-  console.log(search);
+
   return (
     <div>
       <h3>Game Table Here!</h3>

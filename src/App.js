@@ -57,7 +57,9 @@ function App() {
   }
 
   const fetchGameSalesByPlatform = async(gameName) => {
-    try{ let response = await axios.get(`/api/getgamesales/${gameName}`)
+    try{ 
+      gameName = gameName.includes("/") ? gameName.replace("/", "_") : gameName
+      let response = await axios.get(`/api/getgamesales/${gameName}`)
   
     setGameSalesByPlatform(response.data);
     } catch (error) {
