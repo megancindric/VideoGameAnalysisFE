@@ -69,17 +69,15 @@ function App() {
 
  
   return (
-    <div class="flex flex-col items-center">
+    <div className="flex flex-col items-center w-full">
         <Header/>
-        <h1 class="text-3xl">
-          An analysis of trends and patterns in global video game sales over the past 4 decades
-        </h1>  
-        <DropDownMenu values= {allYears} setValue={setSelectedYear} defaultValue={selectedYear}/>
 
-        <PlatformSalesSinceYear platformSalesSinceYear={platformSalesSinceYear} selectedYear={selectedYear}/>  
+        <h1 className="text-4xl p-6 my-6 text-violet-800 font-bold">
+          An analysis of trends and patterns in global video game sales
+        </h1> 
+        <PlatformSalesSinceYear platformSalesSinceYear={platformSalesSinceYear} selectedYear={selectedYear} allYears= {allYears} setSelectedYear={setSelectedYear}/>  
         <GameSalesByPlatform gameName= {gameName} gameSalesByPlatform={gameSalesByPlatform}/>    
         <GameTable allGames = {allGames} setGameName={setGameName}/>
-        
     </div>
   );
 }
