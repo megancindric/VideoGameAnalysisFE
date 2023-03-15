@@ -2,7 +2,7 @@ import React from "react";
 import { Pie, PieChart, Tooltip, Legend, Cell } from "recharts";
 import { chartColors } from "../../utils/ChartColors";
 
-const GameSalesByPlatform = ({ gameName, gameSalesByPlatform }) => {
+const GameSalesByPlatform = ({ gameSalesByPlatform }) => {
   var data = [];
   for (const [key, value] of Object.entries(gameSalesByPlatform)) {
     data.push({ name: key, value: value });
@@ -10,8 +10,8 @@ const GameSalesByPlatform = ({ gameName, gameSalesByPlatform }) => {
   return (
     <div className="flex flex-row-reverse p-8">
       <div>
-        <div className="flex items-center justify-center border rounded-xl border-violet-600 bg-violet-50  p-2.5">
-          <ul className="list-disc">
+        <div className="flex items-center justify-center border rounded-xl border-violet-600 bg-violet-50 p-8  ">
+          <ul className="list-disc p-2.5">
             {data.map((platform, index) => (
               <li
                 className="text-lg rounded-lg font-semibold text-violet-600"

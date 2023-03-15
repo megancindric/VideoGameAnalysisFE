@@ -2,12 +2,14 @@ import React from "react";
 import { BarChart, Bar, XAxis, Tooltip, Cell } from "recharts";
 import { chartColors } from "../../utils/ChartColors";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
+import LoadingSpinner from "../../utils/LoadingSpinner";
 
 const PlatformSalesSinceYear = ({
   platformSalesSinceYear,
   selectedYear,
   setSelectedYear,
   allYears,
+  isLoading,
 }) => {
   var data = [];
   for (const [key, value] of Object.entries(platformSalesSinceYear)) {
@@ -27,18 +29,22 @@ const PlatformSalesSinceYear = ({
           selectLabel="Select Year:"
         />
       </div>
-      <BarChart width={800} height={300} data={data}>
-        <Bar dataKey="amt">
-          {data.map((platform, index) => (
-            <Cell
-              key={`cell-${index}`}
-              fill={chartColors[index % chartColors.length]}
-            />
-          ))}
-        </Bar>
-        <Tooltip />
-        <XAxis dataKey="name" />
-      </BarChart>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <BarChart width={800} height={300} data={data}>
+          <Bar dataKey="amt">
+            {data.map((platform, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={chartColors[index % chartColors.length]}
+              />
+            ))}
+          </Bar>
+          <Tooltip />
+          <XAxis dataKey="name" />
+        </BarChart>
+      )}
     </div>
   );
 };

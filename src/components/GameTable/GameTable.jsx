@@ -1,5 +1,6 @@
 import React from "react";
 import SearchBar from "../SearchBar/SearchBar";
+import LoadingSpinner from "../../utils/LoadingSpinner";
 import GameSalesByPlatform from "../GameSalesByPlatform/GameSalesByPlatform";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -8,8 +9,9 @@ const GameTable = ({ allGames }) => {
   const [expandedRow, setExpandedRow] = useState(null);
   const [gameName, setGameName] = useState("Call of Duty: Modern Warfare 3");
   const [gameSalesByPlatform, setGameSalesByPlatform] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
+    setIsLoading(true);
     fetchGameSalesByPlatform(gameName);
   }, [gameName]);
 
@@ -27,6 +29,7 @@ const GameTable = ({ allGames }) => {
       let response = await axios.get(`/api/getgamesales/${gameName}`);
 
       setGameSalesByPlatform(response.data);
+      setIsLoading(false);
       console.log(response.data);
     } catch (error) {
       console.log("Error in setGameSalesByPlatform: ", error);
@@ -78,10 +81,14 @@ const GameTable = ({ allGames }) => {
                       <h3 className=" text-2xl my-3 font-semibold text-purple-800">
                         {gameName} Sales by Platform
                       </h3>
-                      <GameSalesByPlatform
-                        gameName={game.name}
-                        gameSalesByPlatform={gameSalesByPlatform}
-                      />
+                      {isLoading ? (
+                        <LoadingSpinner />
+                      ) : (
+                        <GameSalesByPlatform
+                          gameName={game.name}
+                          gameSalesByPlatform={gameSalesByPlatform}
+                        />
+                      )}
                     </td>
                   </tr>
                 )}
