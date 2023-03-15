@@ -73,8 +73,11 @@ const GameTable = ({ allGames }) => {
                   <td>{game.year}</td>
                 </tr>
                 {expandedRow === game.id && (
-                  <tr className="border h-auto">
+                  <tr className="border">
                     <td colSpan={5}>
+                      <h3 className=" text-2xl my-3 font-semibold text-purple-800">
+                        {gameName} Sales by Platform
+                      </h3>
                       <GameSalesByPlatform
                         gameName={game.name}
                         gameSalesByPlatform={gameSalesByPlatform}

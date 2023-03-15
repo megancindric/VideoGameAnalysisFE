@@ -8,12 +8,9 @@ const GameSalesByPlatform = ({ gameName, gameSalesByPlatform }) => {
     data.push({ name: key, value: value });
   }
   return (
-    <div className="flex">
+    <div className="flex flex-row-reverse p-8">
       <div>
-        <h3 className=" text-2xl my-3 font-semibold text-purple-800">
-          {gameName} Sales by Platform
-        </h3>
-        <div className="flex items-center justify-center border rounded-xl border-violet-600 bg-violet-50 w-1/2 p-2.5">
+        <div className="flex items-center justify-center border rounded-xl border-violet-600 bg-violet-50  p-2.5">
           <ul className="list-disc">
             {data.map((platform, index) => (
               <li
