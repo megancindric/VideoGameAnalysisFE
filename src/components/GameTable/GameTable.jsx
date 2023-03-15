@@ -1,9 +1,37 @@
 import React from "react";
 import SearchBar from "../SearchBar/SearchBar";
+import GameSalesByPlatform from "../GameSalesByPlatform/GameSalesByPlatform";
 import { useState, useEffect } from "react";
-const GameTable = ({ allGames, setGameName }) => {
+import axios from "axios";
+const GameTable = ({ allGames }) => {
   const [search, setSearch] = useState("");
+  const [expandedRow, setExpandedRow] = useState(null);
+  const [gameName, setGameName] = useState("Call of Duty: Modern Warfare 3");
+  const [gameSalesByPlatform, setGameSalesByPlatform] = useState([]);
 
+  useEffect(() => {
+    fetchGameSalesByPlatform(gameName);
+  }, [gameName]);
+
+  const toggleExpandedRow = (selectedRowIndex) => {
+    if (expandedRow === selectedRowIndex) {
+      setExpandedRow(null);
+    } else {
+      setExpandedRow(selectedRowIndex);
+    }
+    console.log(selectedRowIndex);
+  };
+  const fetchGameSalesByPlatform = async (gameName) => {
+    try {
+      gameName = gameName.includes("/") ? gameName.replace("/", "_") : gameName;
+      let response = await axios.get(`/api/getgamesales/${gameName}`);
+
+      setGameSalesByPlatform(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log("Error in setGameSalesByPlatform: ", error);
+    }
+  };
   // let tableGames = allGames.filter((game) => {
   //   if (
   //     game.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -31,17 +59,30 @@ const GameTable = ({ allGames, setGameName }) => {
           </thead>
           <tbody className=" text-violet-500 border">
             {allGames.slice(0, 50).map((game) => (
-              <tr
-                key={game.id}
-                onClick={() => setGameName(game.name)}
-                className="border p-2.5"
-              >
-                <td>{game.rank}</td>
-                <td>{game.name}</td>
-                <td>{game.platform}</td>
-                <td>{game.publisher}</td>
-                <td>{game.year}</td>
-              </tr>
+              <>
+                <tr
+                  key={game.id}
+                  onClick={() => setGameName(game.name)}
+                  className="border p-2.5"
+                  onClickCapture={() => toggleExpandedRow(game.id)}
+                >
+                  <td>{game.rank}</td>
+                  <td>{game.name}</td>
+                  <td>{game.platform}</td>
+                  <td>{game.publisher}</td>
+                  <td>{game.year}</td>
+                </tr>
+                {expandedRow === game.id && (
+                  <tr className="border h-auto">
+                    <td colSpan={5}>
+                      <GameSalesByPlatform
+                        gameName={game.name}
+                        gameSalesByPlatform={gameSalesByPlatform}
+                      />
+                    </td>
+                  </tr>
+                )}
+              </>
             ))}
           </tbody>
         </table>

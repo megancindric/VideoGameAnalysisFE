@@ -20,11 +20,11 @@ function App() {
     fetchAllGames()
     fetchAllYears()
   }, [])
-
+/*
   useEffect(()=> {
     fetchGameSalesByPlatform(gameName)
   },[gameName])
-
+*/
   useEffect(()=> {
     fetchPlatformSalesSinceYear(selectedYear)
   },[selectedYear])
@@ -55,7 +55,7 @@ function App() {
       console.log("Error in fetchPlatformSalesSinceYear: ", error)
     }
   }
-
+/*
   const fetchGameSalesByPlatform = async(gameName) => {
     try{ 
       gameName = gameName.includes("/") ? gameName.replace("/", "_") : gameName
@@ -66,7 +66,7 @@ function App() {
       console.log("Error in setGameSalesByPlatform: ", error)
     }
   }
-
+*/
  
   return (
     <div className="flex flex-col items-center w-full">
@@ -76,8 +76,9 @@ function App() {
           An analysis of trends and patterns in global video game sales
         </h1> 
         <PlatformSalesSinceYear platformSalesSinceYear={platformSalesSinceYear} selectedYear={selectedYear} allYears= {allYears} setSelectedYear={setSelectedYear}/>  
-        <GameSalesByPlatform gameName= {gameName} gameSalesByPlatform={gameSalesByPlatform}/>    
-        <GameTable allGames = {allGames} setGameName={setGameName}/>
+        {/*<GameSalesByPlatform gameName= {gameName} gameSalesByPlatform={gameSalesByPlatform}/>*/}
+        <GameTable allGames = {allGames} />    
+        
     </div>
   );
 }
