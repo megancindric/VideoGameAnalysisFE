@@ -10,6 +10,19 @@ const GameTable = ({ allGames }) => {
   const [gameName, setGameName] = useState("Call of Duty: Modern Warfare 3");
   const [gameSalesByPlatform, setGameSalesByPlatform] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const ITEMS_PER_PAGE = 50;
+  const [currentPage, setCurrentPage] = useState(1);
+  const startI = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endI = startI + 50;
+  const totalPages = Math.ceil(allGames.length / ITEMS_PER_PAGE);
+
+  const gameData = allGames.slice(startI, endI);
+
+  const handlePagination = (num) => {
+    setCurrentPage(num);
+  };
+
   useEffect(() => {
     setIsLoading(true);
     fetchGameSalesByPlatform(gameName);
@@ -61,7 +74,7 @@ const GameTable = ({ allGames }) => {
             </tr>
           </thead>
           <tbody className=" text-violet-500 border">
-            {allGames.slice(0, 50).map((game) => (
+            {gameData.map((game) => (
               <>
                 <tr
                   key={game.id}
@@ -96,6 +109,25 @@ const GameTable = ({ allGames }) => {
             ))}
           </tbody>
         </table>
+        <div>
+          <button
+            disabled={currentPage === 1}
+            onClick={() => handlePagination(currentPage - 1)}
+          >
+            Previous
+          </button>
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button key={i} onClick={() => handlePagination(i + 1)}>
+              {i + 1}
+            </button>
+          ))}
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => handlePagination(currentPage + 1)}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

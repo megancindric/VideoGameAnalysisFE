@@ -53,12 +53,13 @@ function App() {
 
  
   return (
-    <div className="flex flex-col items-center w-full bg-gradient-to-b from-violet-50 to-violet-500">
+    <div className="flex flex-col items-center w-full bg-gradient-to-b from-violet-50 to-violet-500 gap-12">
         <Header/>
       <div className=''>
-        <h1 className="text-6xl p-6 my-6 text-violet-800 font-bold drop-shadow-2xl">
+        <h1 className="text-6xl p-6  text-violet-800 font-bold drop-shadow-2xl">
           An analysis of trends and patterns in global video game sales
         </h1> 
+        <hr className=" h-0.5 bg-violet-800 border-0 mt-2 w-full" />
         <PlatformSalesSinceYear platformSalesSinceYear={platformSalesSinceYear} selectedYear={selectedYear} allYears= {allYears} setSelectedYear={setSelectedYear} isLoading={isLoading}/>  
         <GameTable allGames = {allGames} />    
        </div> 
