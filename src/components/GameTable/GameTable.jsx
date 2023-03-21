@@ -19,14 +19,32 @@ const GameTable = ({ allGames }) => {
 
   const gameData = allGames.slice(startI, endI);
 
-  const handlePagination = (num) => {
-    setCurrentPage(num);
-  };
-
   useEffect(() => {
     setIsLoading(true);
     fetchGameSalesByPlatform(gameName);
   }, [gameName]);
+
+  const handlePagination = (num) => {
+    setCurrentPage(num);
+  };
+
+  const determinePagination = () => {
+    // For now, defaulting to displaying TEN pagination values (5 each direction)
+    let startingNum = currentPage - 10;
+    let endingNum = currentPage + 10;
+    if (startingNum < 1) {
+      endingNum += Math.abs(startingNum) + 1;
+      startingNum = 1;
+    }
+    if (endingNum > totalPages) {
+      startingNum -= endingNum - totalPages;
+      endingNum = totalPages;
+    }
+    return Array.from(
+      { length: endingNum - startingNum + 1 },
+      (_, i) => startingNum + i
+    );
+  };
 
   const toggleExpandedRow = (selectedRowIndex) => {
     if (expandedRow === selectedRowIndex) {
@@ -62,6 +80,25 @@ const GameTable = ({ allGames }) => {
     <div className="w-full p-20">
       <SearchBar setSearch={setSearch} />
       <div className="relative">
+        <div>
+          <button
+            disabled={currentPage === 1}
+            onClick={() => handlePagination(currentPage - 1)}
+          >
+            &lt;
+          </button>
+          {determinePagination().map((pageNum) => (
+            <button key={pageNum} onClick={() => handlePagination(pageNum)}>
+              {pageNum}
+            </button>
+          ))}
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => handlePagination(currentPage + 1)}
+          >
+            &gt;
+          </button>
+        </div>
         <table className="table-auto w-full text-2xl text-center ">
           <thead>
             <tr className=" text-violet-700 text-3xl">
@@ -109,25 +146,6 @@ const GameTable = ({ allGames }) => {
             ))}
           </tbody>
         </table>
-        <div>
-          <button
-            disabled={currentPage === 1}
-            onClick={() => handlePagination(currentPage - 1)}
-          >
-            Previous
-          </button>
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button key={i} onClick={() => handlePagination(i + 1)}>
-              {i + 1}
-            </button>
-          ))}
-          <button
-            disabled={currentPage === totalPages}
-            onClick={() => handlePagination(currentPage + 1)}
-          >
-            Next
-          </button>
-        </div>
       </div>
     </div>
   );
