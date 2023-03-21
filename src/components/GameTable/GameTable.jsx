@@ -58,12 +58,12 @@ const GameTable = ({ allGames }) => {
   return (
     <div className="w-full p-20">
       <SearchBar setSearch={setSearch} />
-      <div className="relative">
+      <div className="relative gap-6 flex flex-col">
         <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
-        <table className="table-auto w-full text-2xl text-center ">
+        <table className="table-fixed w-full text-2xl text-center bg-violet-200  rounded-lg drop-shadow-xl">
           <thead>
-            <tr className=" text-violet-700 text-3xl">
-              <th>Rank</th>
+            <tr className=" text-violet-700 text-4xl">
+              <th className="p-4">Rank</th>
               <th>Title</th>
               <th>Platform</th>
               <th>Publisher</th>
@@ -71,27 +71,24 @@ const GameTable = ({ allGames }) => {
               <th>Release Year</th>
             </tr>
           </thead>
-          <tbody className=" text-violet-500 border">
+          <tbody className=" text-violet-500">
             {gameData.map((game) => (
               <>
                 <tr
                   key={game.id}
                   onClick={() => setGameName(game.name)}
-                  className="border p-2.5"
+                  className=""
                   onClickCapture={() => toggleExpandedRow(game.id)}
                 >
-                  <td>{game.rank}</td>
+                  <td className="p-3">{game.rank}</td>
                   <td>{game.name}</td>
                   <td>{game.platform}</td>
                   <td>{game.publisher}</td>
                   <td>{game.year}</td>
                 </tr>
                 {expandedRow === game.id && (
-                  <tr className="border">
+                  <tr className=" bg-gradient-to-b from-violet-200 to-violet-300">
                     <td colSpan={5}>
-                      <h3 className=" text-2xl my-3 font-semibold text-purple-800">
-                        {gameName} Sales by Platform
-                      </h3>
                       {isLoading ? (
                         <LoadingSpinner />
                       ) : (
@@ -107,6 +104,7 @@ const GameTable = ({ allGames }) => {
             ))}
           </tbody>
         </table>
+        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </div>
     </div>
   );
