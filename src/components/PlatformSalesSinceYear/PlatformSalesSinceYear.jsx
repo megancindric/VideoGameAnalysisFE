@@ -16,12 +16,12 @@ const PlatformSalesSinceYear = ({
     data.push({ name: key, amt: value });
   }
   return (
-    <div className="flex flex-col pl-20">
-      <h3 className="text-5xl text-violet-800 font-semibold py-16">
-        Global Game sales by platform since {selectedYear}
+    <div className="flex flex-col items-center">
+      <h3 className="text-5xl text-violet-800 font-semibold py-16 ">
+        Global Platform Game Sales since {selectedYear}
       </h3>
-      <div className="flex flex-row  items-center ">
-        <div className="flex-1 ">
+      <div className="flex flex-row ">
+        <div className="flex w-[800px] h-[300px] min-h-[300px] min-w-[800px]">
           {isLoading ? (
             <LoadingSpinner />
           ) : (
@@ -39,13 +39,12 @@ const PlatformSalesSinceYear = ({
             </BarChart>
           )}
         </div>
-        <div className="flex-1 ">
+        <div className="flex">
           <DropDownMenu
             values={allYears}
             setValue={setSelectedYear}
             defaultValue={selectedYear}
             selectLabel="Select Year:"
-            className="items-center"
           />
         </div>
       </div>

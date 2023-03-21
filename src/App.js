@@ -53,10 +53,10 @@ function App() {
 
  
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="flex flex-col items-center w-full bg-gradient-to-b from-violet-50 to-violet-500">
         <Header/>
-<div className=' bg-gradient-to-b from-violet-50 to-violet-500 w-full'>
-        <h1 className="text-4xl p-6 my-6 text-violet-800 font-bold">
+      <div className=''>
+        <h1 className="text-6xl p-6 my-6 text-violet-800 font-bold drop-shadow-2xl">
           An analysis of trends and patterns in global video game sales
         </h1> 
         <PlatformSalesSinceYear platformSalesSinceYear={platformSalesSinceYear} selectedYear={selectedYear} allYears= {allYears} setSelectedYear={setSelectedYear} isLoading={isLoading}/>  
