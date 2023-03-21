@@ -60,7 +60,7 @@ const GameTable = ({ allGames }) => {
       <SearchBar setSearch={setSearch} />
       <div className="relative gap-6 flex flex-col">
         <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
-        <table className="table-fixed w-full text-2xl text-center bg-violet-200  rounded-lg drop-shadow-xl">
+        <table className="table-fixed w-full text-2xl text-center bg-violet-100  rounded-lg drop-shadow-xl">
           <thead>
             <tr className=" text-violet-700 text-4xl">
               <th className="p-4">Rank</th>
@@ -87,7 +87,7 @@ const GameTable = ({ allGames }) => {
                   <td>{game.year}</td>
                 </tr>
                 {expandedRow === game.id && (
-                  <tr className=" bg-gradient-to-b from-violet-200 to-violet-300">
+                  <tr className=" bg-gradient-to-b from-violet-100 to-violet-200">
                     <td colSpan={5}>
                       {isLoading ? (
                         <LoadingSpinner />
