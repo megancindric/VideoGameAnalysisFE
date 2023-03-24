@@ -62,7 +62,7 @@ const GameTable = ({ allGames }) => {
         <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
         <table className="table-fixed w-full text-2xl text-center bg-violet-100  rounded-lg drop-shadow-xl">
           <thead>
-            <tr className=" text-violet-700 text-4xl">
+            <tr className=" text-[#7400b8] text-4xl">
               <th className="p-4">Rank</th>
               <th>Title</th>
               <th>Platform</th>
@@ -71,7 +71,7 @@ const GameTable = ({ allGames }) => {
               <th>Release Year</th>
             </tr>
           </thead>
-          <tbody className=" text-violet-500">
+          <tbody className=" text-[#5e60ce]">
             {gameData.map((game) => (
               <>
                 <tr

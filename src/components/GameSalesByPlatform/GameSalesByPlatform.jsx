@@ -13,20 +13,19 @@ const GameSalesByPlatform = ({ gameSalesByPlatform, gameName }) => {
       <div>
         <div className="flex flex-col items-center justify-center border rounded-xl bg-violet-100 p-6 gap-6 drop-shadow-xl">
           <h3
-            className={`text-3xl my-3 font-semibold text-[#7400b8] drop-shadow-md`}
+            className={`text-3xl my-3 font-semibold text-[${chartColors[0]}] drop-shadow-md`}
           >
             {gameName} Sales by Platform
           </h3>
           <ul className="list-disc p-3">
             {data.map((platform, index) => (
               <li
-                className={`text-2xl rounded-lg font-semibold  text-left p-1`}
+                className={`text-2xl rounded-lg font-semibold  text-left p-1 text-[${
+                  chartColors[index % chartColors.length]
+                }]`}
                 key={index}
               >
-                <b classname={`text-[${chartColors[index]}]`}>
-                  {platform.name}:
-                </b>{" "}
-                ${platform.value} Million
+                <b>{platform.name}:</b> ${platform.value} Million
               </li>
             ))}
           </ul>

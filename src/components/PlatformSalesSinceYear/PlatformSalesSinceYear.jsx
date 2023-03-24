@@ -18,7 +18,7 @@ const PlatformSalesSinceYear = ({
   }
   return (
     <div className="flex flex-col items-center gap-4">
-      <h3 className="text-5xl text-violet-800 font-semibold py-16 ">
+      <h3 className="text-5xl text-[#7400b8] font-semibold py-16 ">
         Global Platform Game Sales since {selectedYear}
       </h3>
       <div className="flex flex-row justify-evenly w-2/3">

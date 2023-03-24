@@ -53,16 +53,16 @@ function App() {
 
  
   return (
-    <div className="flex flex-col items-center w-full bg-gradient-to-b from-violet-50 to-[#7400b8] gap-12">
+    <div className="flex flex-col items-center w-full bg-gradient-to-b from-violet-50 to-[#7400b8] gap-32">
         <Header/>
       <div className=''>
-        <h1 className="text-6xl p-6  text-violet-800 font-bold drop-shadow-2xl">
-          An analysis of trends and patterns in global video game sales
+        <h1 className="text-6xl p-6  text-[#7400b8] font-bold drop-shadow-2xl text-center">
+          An analysis of trends & patterns in global video game sales
         </h1> 
-        <hr className=" h-0.5 bg-violet-800 border-0 mt-2 w-full" />
+        <hr className=" h-0.5 bg-[#5390D9] border-0 mt-2 w-10/12 mx-auto" />
+        </div>
         <PlatformSalesSinceYear platformSalesSinceYear={platformSalesSinceYear} selectedYear={selectedYear} allYears= {allYears} setSelectedYear={setSelectedYear} isLoading={isLoading}/>  
         <GameTable allGames = {allGames} />    
-       </div> 
     </div>
   );
 }

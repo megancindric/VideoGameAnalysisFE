@@ -5,7 +5,7 @@ const DropDownMenu = ({ values, setValue, defaultValue, selectLabel }) => {
     <div className="flex flex-col w-48 mx-auto">
       <label
         for="dropdown"
-        className="block text-4xl mb-2 text-violet-800 font-semibold"
+        className="block text-4xl mb-2 text-[#7400b8] font-semibold"
       >
         {selectLabel}
       </label>
@@ -13,7 +13,7 @@ const DropDownMenu = ({ values, setValue, defaultValue, selectLabel }) => {
         id="dropdown"
         value={defaultValue}
         onChange={(e) => setValue(e.target.value)}
-        className="text-lg p-2.5 rounded-lg font-semibold text-violet-600 bg-white shadow-xl"
+        className="text-lg p-2.5 rounded-lg font-semibold text-[#6930c3] bg-white shadow-xl"
       >
         {values.map((option) => (
           <option value={option} key={option}>
