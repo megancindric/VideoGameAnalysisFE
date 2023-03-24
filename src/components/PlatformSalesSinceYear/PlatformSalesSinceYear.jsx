@@ -3,6 +3,7 @@ import { BarChart, Bar, XAxis, Tooltip, Cell } from "recharts";
 import { chartColors } from "../../utils/ChartColors";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
 import LoadingSpinner from "../../utils/LoadingSpinner";
+import CustomTooltip from "../../utils/CustomTooltip";
 
 const PlatformSalesSinceYear = ({
   platformSalesSinceYear,
@@ -34,7 +35,7 @@ const PlatformSalesSinceYear = ({
                   />
                 ))}
               </Bar>
-              <Tooltip />
+              <Tooltip content={<CustomTooltip />} />
               <XAxis dataKey="name" />
             </BarChart>
           )}

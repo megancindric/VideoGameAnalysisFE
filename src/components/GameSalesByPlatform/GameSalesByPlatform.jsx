@@ -1,6 +1,7 @@
 import React from "react";
 import { Pie, PieChart, Tooltip, Legend, Cell } from "recharts";
 import { chartColors } from "../../utils/ChartColors";
+import CustomTooltip from "../../utils/CustomTooltip";
 
 const GameSalesByPlatform = ({ gameSalesByPlatform, gameName }) => {
   var data = [];
@@ -36,7 +37,7 @@ const GameSalesByPlatform = ({ gameSalesByPlatform, gameName }) => {
               />
             ))}
           </Pie>
-          <Tooltip />
+          <Tooltip content={CustomTooltip} />
           <Legend />
         </PieChart>
       </div>
