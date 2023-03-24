@@ -59,7 +59,11 @@ const GameTable = ({ allGames }) => {
     <div className="w-full p-20">
       <SearchBar setSearch={setSearch} />
       <div className="relative gap-6 flex flex-col">
-        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          darkText={true}
+        />
         <table className="table-fixed w-full text-2xl text-center bg-violet-100  rounded-lg drop-shadow-xl">
           <thead>
             <tr className=" text-[#7400b8] text-4xl">
@@ -104,7 +108,11 @@ const GameTable = ({ allGames }) => {
             ))}
           </tbody>
         </table>
-        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          darkText={false}
+        />
       </div>
     </div>
   );

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
+const Pagination = ({ currentPage, setCurrentPage, totalPages, darkText }) => {
+  console.log(darkText);
+  let textColor = darkText ? "text-[#6930c3]" : "text-slate-50";
+  let activeTextColor = darkText ? "text-[#7400b8]" : "text-white";
   const determinePagination = () => {
     // For now, defaulting to displaying TEN pagination values (5 each direction)
     let startingNum = currentPage - 10;
@@ -20,7 +23,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
   };
 
   return (
-    <div className="flex justify-evenly text-3xl text-[#6930c3]">
+    <div className={`flex justify-evenly text-3xl ${textColor}`}>
       <button
         className="transition-all duration-100 hover:scale-110 "
         disabled={currentPage === 1}
@@ -31,7 +34,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
       {determinePagination().map((pageNum) => (
         <button
           className={`transition-all duration-100 hover:scale-110  ${
-            currentPage === pageNum ? "text-[#7400b8]" : ""
+            currentPage === pageNum ? activeTextColor : ""
           }`}
           key={pageNum}
           onClick={() => setCurrentPage(pageNum)}

@@ -20,10 +20,10 @@ const GameSalesByPlatform = ({ gameSalesByPlatform, gameName }) => {
           <ul className="list-disc p-3">
             {data.map((platform, index) => (
               <li
+                key={index}
                 className={`text-2xl rounded-lg font-semibold  text-left p-1 text-[${
                   chartColors[index % chartColors.length]
                 }]`}
-                key={index}
               >
                 <b>{platform.name}:</b> ${platform.value} Million
               </li>

@@ -4,7 +4,7 @@ const DropDownMenu = ({ values, setValue, defaultValue, selectLabel }) => {
   return (
     <div className="flex flex-col w-48 mx-auto">
       <label
-        for="dropdown"
+        htmlFor="dropdown"
         className="block text-4xl mb-2 text-[#7400b8] font-semibold"
       >
         {selectLabel}
