@@ -53,7 +53,7 @@ function App() {
 
  
   return (
-    <div className="flex flex-col items-center w-full bg-gradient-to-b from-violet-50 to-violet-500 gap-12">
+    <div className="flex flex-col items-center w-full bg-gradient-to-b from-violet-50 to-[#7400b8] gap-12">
         <Header/>
       <div className=''>
         <h1 className="text-6xl p-6  text-violet-800 font-bold drop-shadow-2xl">

@@ -35,7 +35,10 @@ const PlatformSalesSinceYear = ({
                   />
                 ))}
               </Bar>
-              <Tooltip content={<CustomTooltip />} />
+              <Tooltip
+                cursor={{ fill: "transparent" }}
+                content={<CustomTooltip />}
+              />
               <XAxis dataKey="name" />
             </BarChart>
           )}

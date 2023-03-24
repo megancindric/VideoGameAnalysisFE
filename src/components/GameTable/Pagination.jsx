@@ -20,7 +20,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
   };
 
   return (
-    <div className="flex justify-evenly text-2xl text-violet-700">
+    <div className="flex justify-evenly text-3xl text-[#6930c3]">
       <button
         className="transition-all duration-100 hover:scale-110 "
         disabled={currentPage === 1}
@@ -31,7 +31,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
       {determinePagination().map((pageNum) => (
         <button
           className={`transition-all duration-100 hover:scale-110  ${
-            currentPage === pageNum ? "text-violet-900" : ""
+            currentPage === pageNum ? "text-[#7400b8]" : ""
           }`}
           key={pageNum}
           onClick={() => setCurrentPage(pageNum)}
@@ -40,7 +40,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
         </button>
       ))}
       <button
-        className="transition-all duration-100 hover:scale-110 "
+        className="  transition-all duration-100 hover:scale-110"
         disabled={currentPage === totalPages}
         onClick={() => setCurrentPage(currentPage + 1)}
       >
