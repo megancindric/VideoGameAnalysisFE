@@ -87,7 +87,7 @@ const GameTable = ({ allGames }) => {
                   <td>{game.year}</td>
                 </tr>
                 {expandedRow === game.id && (
-                  <tr className=" bg-gradient-to-b from-violet-100 to-violet-200">
+                  <tr className=" bg-gradient-to-b from-violet-100 to-violet-200 min-h-[450px] h-[450px]">
                     <td colSpan={5}>
                       {isLoading ? (
                         <LoadingSpinner />
