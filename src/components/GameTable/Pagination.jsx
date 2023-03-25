@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Pagination = ({ currentPage, setCurrentPage, totalPages, darkText }) => {
-  console.log(darkText);
+  console.log(totalPages);
   let textColor = darkText ? "text-[#6930c3]" : "text-slate-50";
   let activeTextColor = darkText ? "text-[#7400b8]" : "text-white";
   const determinePagination = () => {
@@ -14,6 +14,10 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages, darkText }) => {
     }
     if (endingNum > totalPages) {
       startingNum -= endingNum - totalPages;
+      // if we fall below 0 pages
+      if (startingNum < 1) {
+        startingNum = 1;
+      }
       endingNum = totalPages;
     }
     return Array.from(

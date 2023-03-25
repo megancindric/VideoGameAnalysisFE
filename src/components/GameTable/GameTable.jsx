@@ -16,14 +16,25 @@ const GameTable = ({ allGames }) => {
   const ITEMS_PER_PAGE = 50;
   const startI = (currentPage - 1) * ITEMS_PER_PAGE;
   const endI = startI + 50;
-  const totalPages = Math.ceil(allGames.length / ITEMS_PER_PAGE);
+  const filteredData = allGames.filter(
+    (game) =>
+      game.name.toLowerCase().includes(search) ||
+      game.platform.toLowerCase().includes(search) ||
+      game.publisher.toLowerCase().includes(search)
+  );
+  const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
 
-  const gameData = allGames.slice(startI, endI);
+  const gameData = filteredData.slice(startI, endI);
 
   useEffect(() => {
     setIsLoading(true);
     fetchGameSalesByPlatform(gameName);
   }, [gameName]);
+
+  const handleSearch = (query) => {
+    setSearch(query.toLowerCase());
+    setCurrentPage(1);
+  };
 
   const toggleExpandedRow = (selectedRowIndex) => {
     if (expandedRow === selectedRowIndex) {
@@ -45,24 +56,16 @@ const GameTable = ({ allGames }) => {
       console.log("Error in setGameSalesByPlatform: ", error);
     }
   };
-  // let tableGames = allGames.filter((game) => {
-  //   if (
-  //     game.name.toLowerCase().includes(search.toLowerCase()) ||
-  //     game.platform.toLowerCase().includes(search.toLowerCase()) ||
-  //     game.publisher.toLowerCase().includes(search.toLowerCase())
-  //   ) {
-  //     return true;
-  //   }
-  // });
 
   return (
     <div className="w-full p-20">
-      <SearchBar setSearch={setSearch} />
+      <SearchBar setSearch={handleSearch} />
       <div className="relative gap-6 flex flex-col">
         <Pagination
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           darkText={true}
+          totalPages={totalPages}
         />
         <table className="table-fixed w-full text-2xl text-center bg-violet-100  rounded-lg drop-shadow-xl">
           <thead>
@@ -112,6 +115,7 @@ const GameTable = ({ allGames }) => {
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           darkText={false}
+          totalPages={totalPages}
         />
       </div>
     </div>
